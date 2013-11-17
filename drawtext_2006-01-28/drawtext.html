@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+    <TITLE>drawtext shader</TITLE>
+    <META name="editor" content="/usr/bin/vi">
+    <LINK REL="shortcut icon" HREF="/favicon.ico">
+</HEAD>
+
+<BODY>
+<CENTER>
+<H1>drawtext GLSL shader</H1>
+<IMG SRC="glsl_dataflag_small.jpg" ALT="glsl_dataflag" BORDER="0" WIDTH="256" HEIGHT="265">
+<p>
+Download <a href="drawtext_2006-01-28.zip">drawtext_2006-01-28.zip</a> (xx KB)
+</CENTER>
+<p>
+
+The 
+<a href="drawtext.frag">drawtext</a>
+fragment shader renders numeric values inside a GLSL shader as strings of ASCII characters.
+It basically performs an sprintf() per fragment to dynamically generate texture coordinates into a glyph texture
+such as <a href="verasansmono.png">verasansmono.png</a>
+
+Rather than using multipass/render-to-texture to create a <i>dynamic texture</i>,
+drawtext demonstrates uses a shader to generate <i>dynamic texture coordinates</i> into a static texture
+for single-pass rendering.
+
+<p>
+
+This implementation of drawtext uses
+<A HREF="http://opengl.org/">OpenGL 2.0</A>,
+<A HREF="http://opengl.org/documentation/oglsl.html">OpenGL Shading Language (GLSL)</A>, and
+<A HREF="http://www.openscenegraph.org/">Open Scene Graph (OSG)</A>
+It was developed on a
+<a href="http://www.3Dlabs.com/">3Dlabs</a>
+<a href="http://www.3dlabs.com/products/product.asp?prod=290">Wildcat Realizm 100</a>
+graphics accelerator running Windows XP.
+
+<p>
+
+drawtext is a stress test of a GLSL compiler and the GPU's shader processors, in that
+it is a large shader that pokes into areas that are definitely away from the typical
+hardware-shading system comfort-zone, such as dynamic looping and conditionals,
+integer calculations and indexing, and discontinuous texture coordinates.
+
+<p>
+
+From the OpenSceneGraph list,
+<a href="http://openscenegraph.org/archiver/osg-users/2005-October/0033.html">this message</a>
+discusses using drawtext to display in the inner state of a GLSL predefined uniform structure,
+(e.g.: gl_Fog)
+
+<p>
+
+See also
+<a href='http://developer.3dlabs.com/documents/index.htm#Presentations'>"GLSL Shading with OSG"</a>,
+presented at the OSG Advanced Rendering seminar at SIGGRAPH 2005.
+
+<p>
+
+drawtext and glsl_dataflag.osg are included in the OpenSceneGraph 1.0 Windows binary installer available at 
+<a href="http://mew.cx/osg/">http://mew.cx/osg/</a>
+They are maintained as part of the <a href="http://mew.cx/osg/#osgtoy">osgToy</a> project at 
+<A HREF="http://sourceforge.net"><IMG SRC="http://sourceforge.net/sflogo.php?group_id=139833&amp;type=1" WIDTH="88" HEIGHT="31" BORDER="0" ALT="SourceForge.net" /></A>
+<P>
+
+<hr>
+
+<CENTER>
+<TABLE CELLSPACING=1 CELLPADDING=1 WIDTH="90%">
+
+<TR ALIGN="CENTER">
+<TD> <IMG SRC="glsl_dataflag.jpg" BORDER=0 WIDTH=576 HEIGHT=498> </TD>
+<TD> drawtext shader applied to a simple 3-triangle dataflag </TD>
+</TR>
+
+<TR ALIGN="CENTER">
+<TD> <IMG SRC="dataflags_fog.jpg" BORDER=0 WIDTH=512 HEIGHT=512> </TD>
+<TD> Using drawtext to display members of the gl_Fog structure (annotations added manually with GIMP) </TD>
+</TR>
+
+<TR ALIGN="CENTER">
+<TD> <IMG SRC="3dataflags.jpg" BORDER=0 WIDTH=649 HEIGHT=561> </TD>
+<TD> Multiple instances the dataflag can render per-instance values </TD>
+</TR>
+
+<TR ALIGN="CENTER">
+<TD> <IMG SRC="verasansmono.png" BORDER=0 WIDTH=256 HEIGHT=256> </TD>
+<TD> the verasansmono.png glyph texture </TD>
+</TR>
+
+</TABLE>
+</CENTER>
+
+<HR>
+<ADDRESS>
+Michael E. Weiblen / mew-AT-mew-DOT-cx / <A HREF="http://mew.cx/">http://mew.cx/</A>
+</ADDRESS>
+$Id 1st draft 2006-01-28$
+
+</BODY>
+</HTML>
